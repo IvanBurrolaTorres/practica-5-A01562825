@@ -1,25 +1,23 @@
 package mx.tec.inventario.ui.state
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import mx.tec.inventario.data.ProductoRepository
 import mx.tec.inventario.domain.Producto
 
-/**
- * La lista del inventario.
- *
- * `recargar()` hay que llamarlo a mano cada vez que algo pudo haber cambiado:
- * al entrar a la pantalla, y al volver de agregar o borrar. Si se te olvida en
- * un solo lugar, la pantalla miente.
- */
-class ListaViewModel : ViewModel() {
+class ListaViewModel(repository: ProductoRepository) : ViewModel() {
+    // null: cargando; emptyList(): consulta terminada sin productos.
+    val productos: StateFlow<List<Producto>?> =
+        repository.observarTodos().stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(ESPERA_MS),
+            initialValue = null
+        )
 
-    var productos by mutableStateOf<List<Producto>?>(null)
-        private set
-
-    fun recargar() {
-        productos = ProductoRepository.obtenerTodos()
+    private companion object {
+        const val ESPERA_MS = 5_000L
     }
 }
