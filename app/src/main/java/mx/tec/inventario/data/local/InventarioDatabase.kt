@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [ProductoEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ProductoEntity::class], version = 2, exportSchema = false)
 abstract class InventarioDatabase : RoomDatabase() {
     abstract fun productoDao(): ProductoDao
 
@@ -20,7 +20,8 @@ abstract class InventarioDatabase : RoomDatabase() {
                     context.applicationContext,
                     InventarioDatabase::class.java,
                     "inventario.db"
-                ).build().also { instancia = it }
+                ).fallbackToDestructiveMigration(dropAllTables = true)
+                    .build().also { instancia = it }
             }
     }
 }
