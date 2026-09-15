@@ -36,3 +36,27 @@ La actualización depende de quien coordina cada acción: en la navegación se a
 ## A3 — Columna mal escrita
 
 El DAO final usa `nombre`, la columna que existe. La guía pide probar `nombres` y observar un error de KSP al compilar; esa ejecución de KSP queda pendiente. La comprobación aislada de SQL realizada por el asistente se documentará por separado y no sustituye la compilación Android.
+
+## C2 — Persistencia y actualización automática
+
+El cambio técnico es sustituir la lista mutable por una base de datos en disco. La implementación ya no reinicia tres productos en cada proceso. Al guardar, el código realiza la escritura antes de ejecutar `alTerminar()`.
+
+La cadena de la guía es: escritura → invalidación de la tabla → nueva consulta de Room → emisión del Flow → StateFlow → recomposición de Compose. No se añade una llamada manual para refrescar.
+
+**Prueba en Android pendiente:** agregar un producto, terminar realmente el proceso y reabrir la aplicación. No se afirma haber visto persistencia en un emulador. La comprobación de archivo SQLite realizada aparte no sustituye esa prueba.
+
+## Ejercicio D1 — Una escritura, dos pantallas
+
+`venderUno()` toma el producto, evita vender si está agotado y actualiza la misma fila usando su ID. La cantidad baja en uno; el valor se obtiene de `precio * cantidad` en el dominio.
+
+Según el mecanismo descrito en la guía, cuando la tabla cambia, **Room** vuelve a ejecutar las consultas observadas. La UI y el NavHost no llaman a `recargar()`. Si la lista está siendo observada durante una venta, se espera una nueva consulta de esa lista y la emisión de su resultado actualizado.
+
+**Número de ejecuciones medido:** no disponible. No se utilizó Database Inspector aquí y no se inventa un conteo. Como `WhileSubscribed(5000)` puede detener la suscripción de una pantalla que ya no se observa, no se presenta «una consulta en todos los casos» como medición. Para la comprobación solicitada habría que observar una venta con el inspector abierto y registrar lo que ocurra en ese dispositivo.
+
+## D2 — Borrado
+
+El repositorio borra la fila y después ejecuta la navegación de regreso. El detalle acepta un producto nulo mientras llega la primera consulta o después de desaparecer la fila, como plantea la guía. La lista se alimenta del Flow del DAO, no de una lista en memoria.
+
+## Separación entre lo implementado y lo observado
+
+Los cambios A–C anteriores están en el código. Los ensayos visuales de cierre/reapertura, bloqueo temporal del botón Guardar e inspección de la tabla no se registraron en este entorno. La evidencia de ejecución debe obtenerse del proyecto real, no de una pantalla simulada.

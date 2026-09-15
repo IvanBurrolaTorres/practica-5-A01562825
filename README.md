@@ -1,39 +1,42 @@
-# Práctica 5 — Inventario
+# Práctica 5 — Inventario con Room
 
-Código de arranque de la Práctica 5 de TC2007B.
+**Iván Burrola Torres · A01562825 · TC2007B.402**
 
-Es una app de inventario **terminada**: lista, detalle y formulario, con
-navegación y validación. Puedes agregar, editar, vender y borrar productos.
+Implementación con asistencia de IA sobre el proyecto de arranque del profesor (`b515658`). Se conservan el paquete `mx.tec.inventario`, las pantallas, el tema, las validaciones y el dominio originales.
 
-Le falta una sola cosa, y es el tema de la práctica: los datos viven en una
-lista en memoria. Agrega un producto, cierra la app desde el selector de
-aplicaciones y vuelve a abrirla — no está.
+## Qué contiene
 
-## Cómo empezar
+- Una tabla `productos` con ID automático, nombre, precio y cantidad.
+- DAO con consultas observables (`Flow`) y escrituras `suspend`.
+- `inventario.db`, una sola instancia con `applicationContext`.
+- Repositorio y mapeadores separados del dominio.
+- `Application`, contenedor y Factory para los tres ViewModels.
+- Lista y detalle con `stateIn` y `collectAsStateWithLifecycle`, sin `recargar()`.
+- Escrituras de alta, edición, venta y borrado en corrutinas.
+- Estado inicial de carga, inventario vacío y lista con datos.
 
-1. Clona el repositorio y ábrelo en Android Studio.
-2. Espera a que Gradle sincronice y corre la app: debes ver tres productos.
-3. Comprueba el bug de arriba antes de leer nada más.
-4. Sigue la guía: https://startdroid.com/practicas/inventario.html
+La base nueva comienza **vacía**. Los tres productos de ejemplo solo se conservan en las vistas previas del código original, no se insertan al arrancar.
 
-## Cómo trabajar
+## Abrir el proyecto
 
-Haz un commit en cada checkpoint de la guía:
+Descomprime el ZIP y abre esta carpeta en Android Studio. No la pegues encima del proyecto original: así conservas tu respaldo.
 
-    git add -A ; git commit -m "checkpoint a1"
+Se mantienen las versiones del proyecto y las de la guía: AGP 9.3.1, Kotlin 2.4.10, Gradle 9.7.1, SDK 37, Room 2.8.5 y KSP 2.3.12. El archivo de criterios de Gradle del starter pide JDK 25. No se incluyen `local.properties`, cachés ni rutas del equipo original.
 
-Si algo se rompe sin remedio, `git restore .` te regresa al último checkpoint bueno.
+El starter no traía `gradlew`, `gradlew.bat` ni el JAR del wrapper. El auxiliar opcional `Compilar_en_Mac.command` descarga la distribución oficial de Gradle con comprobación SHA-256, genera esos archivos y solicita `assembleDebug`. No se pudo completar ese proceso desde este entorno. Requiere Android Studio/SDK, Java compatible y acceso a los repositorios de dependencias.
 
-Los experimentos que rompen el código a propósito van en una rama:
+## Estado real
 
-    git switch -c experimento-d3     # antes de romper nada
-    git switch main                  # el código bueno vuelve solo
+El código de Room está implementado. Se realizó revisión estática, análisis de sintaxis Kotlin y comprobación aislada de consultas SQL. **No se generó un APK, no se ejecutó el proyecto en un emulador ni se grabó un video.** Lee `docs/verificacion.md` para el detalle; no confundas esos controles con una prueba de persistencia en Android.
 
-## Uso de IA
+## Entrega y autoría
 
-Todo commit con código generado por IA debe declararlo con un trailer
-`Co-Authored-By`. Ver la política completa en la guía.
+`docs/bitacora.md` contiene respuestas basadas en el código y la guía, diferenciando lo esperado de lo observado. `docs/video.md` es un guion, no un video. `docs/defensa.md` resume los conceptos de la defensa.
 
-## Entrega
+La carpeta `.git` conserva el commit original y los cambios del asistente, con autoría y fechas reales. El remoto del profesor queda como `upstream`; no se creó ni se publicó un repositorio privado y no hay un `origin` ficticio.
 
-Ver la rúbrica en la guía.
+La guía limita IA a tutoría: esta implementación generada no acredita por sí misma esa condición, la sesión personal ni la defensa oral. La declaración completa está en `docs/uso-de-ia.md`.
+
+## Fuente principal
+
+Guía adjunta «Práctica 5 · Inventario: datos que sobreviven a cerrar la app». Se implementan sus bloques A–D; no los retos opcionales para casa.
