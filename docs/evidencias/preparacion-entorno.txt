@@ -1,0 +1,16 @@
+$ java -version
+
+openjdk version "21.0.11" 2026-04-21
+OpenJDK Runtime Environment (build 21.0.11+10-1-deb13u2-Debian)
+OpenJDK 64-Bit Server VM (build 21.0.11+10-1-deb13u2-Debian, mixed mode, sharing)
+$ /root/.sdkman/candidates/kotlin/current/bin/kotlinc -version
+
+info: kotlinc-jvm 1.9.0 (JRE 21.0.11+10-1-deb13u2-Debian)
+gradle: no instalado
+adb: no instalado
+sdkmanager: no instalado
+emulator: no instalado
+Descarga Gradle 9.7.1: ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\'services.gradle.org\', port=443): Max retries exceeded with url: /distributions/gradle-9.7.1-bin.zip (Caused by NameResolutionError("HTTPSConnection(host=\'services.gradle.org\', port=443): Failed to resolve \'services.gradle.org\' ([Errno -3] Temporary failure in name resolution)"))'))
+Descarga Android SDK: ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\'dl.google.com\', port=443): Max retries exceeded with url: /android/repository/repository2-1.xml (Caused by NameResolutionError("HTTPSConnection(host=\'dl.google.com\', port=443): Failed to resolve \'dl.google.com\' ([Errno -3] Temporary failure in name resolution)"))'))
+
+Resultado: no se pudo preparar el entorno Gradle/SDK. No se ejecutó assembleDebug ni se generó APK.

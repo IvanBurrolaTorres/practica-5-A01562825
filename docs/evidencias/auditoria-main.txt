@@ -1,0 +1,38 @@
+OK: Room 2.8.5 y KSP 2.3.12 de la guía
+OK: Room runtime/compiler comparten versión
+OK: Plugin KSP y tres dependencias agregadas
+OK: Application registrada
+OK: Sin permisos de Internet añadidos
+OK: Dominio intacto: Producto.kt
+OK: Dominio sin imports Room: Producto.kt
+OK: Dominio intacto: ProductoValidator.kt
+OK: Dominio sin imports Room: ProductoValidator.kt
+OK: UI original conservada: DetalleScreen.kt
+OK: UI original conservada: FormularioScreen.kt
+OK: UI original conservada: ListaScreen.kt
+OK: UI original conservada: Estados.kt
+OK: UI original conservada: Formato.kt
+OK: UI original conservada: ProductoCard.kt
+OK: UI original conservada: Theme.kt
+OK: FormularioUiState intacto
+OK: Cuatro viewModel usan Factory
+OK: Dos collectAsStateWithLifecycle
+OK: Ningún LaunchedEffect en NavHost
+OK: Ninguna llamada recargar en main
+OK: Base archivo inventario.db v1 sin fallback destructivo
+OK: Singleton applicationContext, volatile y synchronized
+OK: Dos lecturas Flow sin suspend
+OK: Tres escrituras suspend
+OK: ListaViewModel tiene stateIn null y WhileSubscribed
+OK: DetalleViewModel tiene stateIn null y WhileSubscribed
+OK: Formulario carga con filterNotNull().first()
+OK: Tres manejadores de entrada conservados
+OK: SQL observarTodos: orden NOCASE
+OK: SQL observarPorId: parámetro :id
+OK: SQL id inexistente devuelve ninguna fila
+OK: SQL aislado detecta nombres inexistente
+OK: SQLite aislado: fila y actualización al reabrir archivo
+OK: SQLite aislado: borrado de fila
+OK: git diff --check
+Total: 36 comprobaciones estáticas/SQL aislado correctas.
+No equivale a compilar el APK ni a ejecutar Room, KSP o una pantalla Android.

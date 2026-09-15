@@ -60,3 +60,28 @@ El repositorio borra la fila y después ejecuta la navegación de regreso. El de
 ## Separación entre lo implementado y lo observado
 
 Los cambios A–C anteriores están en el código. Los ensayos visuales de cierre/reapertura, bloqueo temporal del botón Guardar e inspección de la tabla no se registraron en este entorno. La evidencia de ejecución debe obtenerse del proyecto real, no de una pantalla simulada.
+
+## Ejercicio D3 — Cambiar el esquema
+
+La rama `experimento-d3` conserva dos estados:
+
+1. `88c637c`: `ProductoEntity` recibe `categoria`, pero Database continúa en versión 1.
+2. `2b6b106`: Database pasa a versión 2 e incorpora `fallbackToDestructiveMigration(dropAllTables = true)`.
+
+**Qué se comprobó aquí:** los dos cambios están en commits separados y ambos pasan el análisis de sintaxis Kotlin. La rama `main` conserva las cuatro columnas originales, versión 1 y ninguna migración destructiva. No se ha ejecutado el APK de estas variantes en un dispositivo.
+
+**Resultado esperado según la guía:** en el primer estado, una instalación con la base anterior debe rechazar el esquema nuevo con `Room cannot verify the data integrity`. En el segundo, la migración destructiva recrea la base y pierde el inventario previo. Estos son resultados descritos por la guía, no una excepción ni pérdida de datos observada por el estudiante o el asistente.
+
+**Por qué ocurre:** Room compara el esquema esperado con el guardado. Una columna nueva modifica el esquema; no basta con volver a compilar. Subir la versión permite tratar la transición, pero la opción destructiva no conserva las filas. Una migración real sería necesaria para conservar datos en producción; no se añadió porque es un reto opcional de esta práctica.
+
+**Precaución técnica añadida:** volver a `main` cambia el código, no revierte el archivo de base de datos de un teléfono. Si se prueba versión 2 y después se instala versión 1 sobre esos datos, puede requerirse una instalación de prueba limpia. No se ejecuta ninguna limpieza de datos automáticamente.
+
+## Cierre
+
+Implementación principal: entidad separada, DAO, Database, mapeadores, contenedor, Factory, Flow y operaciones de alta/edición/venta/borrado. Los seis checkpoints son etapas técnicas preparadas por IA con sus fechas reales, no evidencia de trabajo personal en clase. La defensa oral y las comprobaciones visuales siguen siendo personales y no se sustituyen con este documento.
+
+## Fuentes
+
+- Guía adjunta: «Práctica 5 · Inventario: datos que sobreviven a cerrar la app», bloques 0, A, B, C y D.
+- Proyecto de arranque del profesor: `rpversontec/practica-5-inventario`, commit `b515658`, incluido en el ZIP recibido.
+- Asistencia de implementación y revisión: ChatGPT, declarada en el historial y en `docs/uso-de-ia.md`.

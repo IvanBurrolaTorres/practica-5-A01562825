@@ -1,0 +1,27 @@
+OK sintaxis: app/build.gradle.kts
+OK sintaxis: app/src/main/java/mx/tec/inventario/InventarioApplication.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/MainActivity.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/data/ProductoRepository.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/data/local/InventarioDatabase.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/data/local/Mappers.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/data/local/ProductoDao.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/data/local/ProductoEntity.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/domain/Producto.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/domain/ProductoValidator.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/components/Estados.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/components/Formato.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/components/ProductoCard.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/navigation/InventarioNavHost.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/navigation/Route.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/screens/DetalleScreen.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/screens/FormularioScreen.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/screens/ListaScreen.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/state/AppViewModelProvider.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/state/DetalleViewModel.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/state/FormularioViewModel.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/state/ListaViewModel.kt
+OK sintaxis: app/src/main/java/mx/tec/inventario/ui/theme/Theme.kt
+OK sintaxis: build.gradle.kts
+OK sintaxis: settings.gradle.kts
+Archivos: 25; errores de sintaxis: 0
+Alcance: parser Kotlin 1.9 local. NO resuelve AndroidX ni ejecuta Room/KSP.

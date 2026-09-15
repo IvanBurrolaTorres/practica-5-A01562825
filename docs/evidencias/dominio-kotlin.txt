@@ -1,0 +1,6 @@
+Comprobación realizada sobre los dos archivos domain/ originales, sin cambios.
+Comando: kotlinc app/src/main/java/mx/tec/inventario/domain/*.kt -d domain.jar
+Compilador local: Kotlin/JVM 1.9.0.
+Resultado: código de salida 0; sin errores de compilación.
+Clases generadas: Producto, ProductoError, ProductoValidator.
+Esto no compila Room, Compose, KSP ni la aplicación Android. No es un APK.
